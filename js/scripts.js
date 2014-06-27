@@ -79,7 +79,7 @@ function split_function(contents_file){
 					difference_indays.push(days_diff);
 				}
 
-				alert("The order was delivered " + days_diff + " days ago! Please check on this! " );
+				// alert("The order was delivered " + days_diff + " days ago! Please check on this! " );
 			}
 			else if(diff==1){
 
@@ -90,12 +90,11 @@ function split_function(contents_file){
 					order_list.push(words[17]);
 					difference_indays.push(days_diff);
 				}
-
-				alert(days_diff + " days difference! This is Ridiculous!! Contact Customer and DOCData/DHL !!!");
 			}
 			else if(diff >= 2){
-				alert("Really old");
 				order_list.push(words[17]);
+				difference_indays.push(days_diff);
+
 			}
 			else{
 				alert("Invalid");
@@ -105,14 +104,67 @@ function split_function(contents_file){
 
 	}
 
-
-
-	for (var j=0;j<order_list.length;j++){
-		alert("Order ID" + order_list[j] + "---  delivered around " + difference_indays[j] + " days ago.");
+	for (i=0;i<order_list.length;i++){
+		console.log(order_list[i]);
 	}
+
+
+	var message_content = [];
+	for (var j=0;j<order_list.length;j++){
+		var mc = "Order ID " .concat (order_list[j], "    |     Delivered around " ,difference_indays[j], " days ago.");
+		message_content.push(mc);
+	}
+
+	for (i=0;i<order_list.length;i++){
+		console.log(message_content[i]);
+	}
+
+
+
+	document.getElementById("email_content").innerHTML = message_content[0];
+
+	for (i=1;i<order_list.length;i++){
+		$("email_content").append(message_content[i]);
+	}
+
+	// This displays the contents of the email.
+	// alert(document.getElementById("email_content").innerHTML);
 
 }
 
+
+
+
+// $('#upload').click(function() {
+// $.ajax({
+//   type: "POST",
+//   url: "goo.gl/rDI6Qg",
+//   data: {
+//     'key': 'rmGq-MnWRKnKpCU0YGP75g',
+//     'message': {
+//       'from_email': 'YOUR@EMAIL.HERE',
+//       'to': [
+//           {
+//             'email': 'btiwaree.groupesales@gmail.com',
+//             'name': 'Bishesh Tiwaree',
+//             'type': 'to'
+//           },
+//           {
+//             'email': 'bisheshtiwaree@gmail.com',
+//             'name': 'Bishesh Tiwaree',
+//             'type': 'to'
+//           }
+//         ],
+//       'autotext': 'true',
+//       'subject': 'YOUR SUBJECT HERE!',
+//       'html': "asddsaasad"
+//     }
+//   }
+//  }).done(function(response) {
+//    console.log(response); // if you're into that sorta thing
+//  });
+
+// });
 
 
 // Deprecated!!!
