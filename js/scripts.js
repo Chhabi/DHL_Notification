@@ -7,6 +7,8 @@ function split_function(contents_file){
 	//we will push the order id in this array while looping through each line in DHL
 	var order_list = [];
 
+	//days difference calculator
+	var difference_indays = [];
 
 	//For the yy, mm and dd; as well as getting it as a whole string,
 	var today = new Date();
@@ -37,7 +39,7 @@ function split_function(contents_file){
 	var lines_count = lines.length;
 
 	var i=0;
-	for (i=0;i<lines_count-1;i++){
+	for (i=1;i<lines_count-1;i++){
 		//now we get the each data-value from the text file
 		var words = lines[i].split(";");
 		
@@ -63,9 +65,6 @@ function split_function(contents_file){
 			var _month_ = Number(_month);	//month in number data type
 			
 
-
-			// alert(daysinMonth[_month_]);
-
 			//difference in month in between the sending date and the current date
 			var diff = mm - _month_;
 			var days_diff;
@@ -75,29 +74,43 @@ function split_function(contents_file){
 			if (diff == 0){
 				days_diff = dd - _day_;
 
-				if (days_diff >4){
-					words[]
+				if (days_diff >= 5){
+					order_list.push(words[17]);
+					difference_indays.push(days_diff);
 				}
 
-				alert("same Month and " + days_diff + " days difference !!!" );
+				alert("The order was delivered " + days_diff + " days ago! Please check on this! " );
 			}
 			else if(diff==1){
+
+				//calculating difference in number of days in between 2 months.
 				days_diff = ( (daysinMonth[_month_] - _day_ ) + dd) 
-				alert(days_diff + " days difference");
+
+				if (days_diff >= 5){
+					order_list.push(words[17]);
+					difference_indays.push(days_diff);
+				}
+
+				alert(days_diff + " days difference! This is Ridiculous!! Contact Customer and DOCData/DHL !!!");
 			}
 			else if(diff >= 2){
 				alert("Really old");
+				order_list.push(words[17]);
 			}
 			else{
 				alert("Invalid");
 			}
 
-
 		}
 
-
-
 	}
+
+
+
+	for (var j=0;j<order_list.length;j++){
+		alert("Order ID" + order_list[j] + "---  delivered around " + difference_indays[j] + " days ago.");
+	}
+
 }
 
 
@@ -112,7 +125,7 @@ var yy_ = yy.toString();
 var mm = today.getMonth()+1;
 	if (mm<10){
 		mm = "0".concat(mm);
-		alert(mm)
+		// alert(mm)
 	}
 
 var mm_ = mm.toString();
