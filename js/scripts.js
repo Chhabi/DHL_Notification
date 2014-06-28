@@ -130,41 +130,32 @@ function split_function(contents_file){
 	// This displays the contents of the email.
 	// alert(document.getElementById("email_content").innerHTML);
 
+	for (i=0;i<order_list.length;i++){
+    	var tobeaddded = '<tr><td>'.concat(i+1,'</td><td>',order_list[i],'</td><td><span class="badge">',difference_indays[i],'</span></td><td>Link</td></tr><br>');
+	    //adding row to table
+    	$("#mytable").append(tobeaddded);
+	}
+
+
 }
 
 
 
 
-// $('#upload').click(function() {
-// $.ajax({
-//   type: "POST",
-//   url: "goo.gl/rDI6Qg",
-//   data: {
-//     'key': 'rmGq-MnWRKnKpCU0YGP75g',
-//     'message': {
-//       'from_email': 'YOUR@EMAIL.HERE',
-//       'to': [
-//           {
-//             'email': 'btiwaree.groupesales@gmail.com',
-//             'name': 'Bishesh Tiwaree',
-//             'type': 'to'
-//           },
-//           {
-//             'email': 'bisheshtiwaree@gmail.com',
-//             'name': 'Bishesh Tiwaree',
-//             'type': 'to'
-//           }
-//         ],
-//       'autotext': 'true',
-//       'subject': 'YOUR SUBJECT HERE!',
-//       'html': "asddsaasad"
-//     }
-//   }
-//  }).done(function(response) {
-//    console.log(response); // if you're into that sorta thing
-//  });
+//display table when submit clicked
+function showTextArea()
+{
+    document.getElementById("finaltable").style.display = "block";
+    document.getElementById("infobox").style.display = "block";
 
-// });
+}
+
+
+
+
+function groupesales(){
+	document.getElementById("shopinfo").style.display = "block";
+}
 
 
 // Deprecated!!!
