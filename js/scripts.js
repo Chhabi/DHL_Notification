@@ -5,7 +5,8 @@ function split_function(contents_file){
 	var daysinMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 	//we will push the order id in this array while looping through each line in DHL
-	var order_list = [];
+	window.order_list = [];
+
 
 	//days difference calculator
 	var difference_indays = [];
@@ -148,6 +149,12 @@ function showTextArea()
     document.getElementById("finaltable").style.display = "block";
     document.getElementById("infobox").style.display = "block";
 
+}
+
+
+function showcount(){
+	var mycount = order_list.length;
+	document.getElementById("counter").innerHTML =  mycount;               
 }
 
 
